@@ -6,8 +6,27 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="smart-city" />
+        <module name="device-parser-init" />
+        <module name="smart-park" />
+        <module name="device-parser-functions" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="device-data-subscribe" target="11" />
+      <module name="device-parser-starter" target="11" />
+      <module name="starter" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="device-data-subscribe" options="-parameters" />
+      <module name="device-parser-functions" options="-parameters" />
+      <module name="device-parser-init" options="-parameters" />
+      <module name="device-parser-starter" options="-parameters" />
+      <module name="smart-city" options="-parameters" />
+      <module name="smart-device-parser" options="-parameters" />
+      <module name="smart-park" options="-parameters" />
+      <module name="starter" options="-parameters" />
+    </option>
   </component>
 </project>
