@@ -11,6 +11,7 @@
       <set>
         <option value="$PROJECT_DIR$/smart-device-parser/device-data-subscribe/pom.xml" />
         <option value="$PROJECT_DIR$/smart-device-parser/device-parser-starter/pom.xml" />
+        <option value="$PROJECT_DIR$/smart-park-device-parser-starter/pom.xml" />
       </set>
     </option>
   </component>
