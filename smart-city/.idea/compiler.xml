@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="device-parser-init" />
         <module name="device-parser-functions" />
+        <module name="smart-park-device-parser-init" />
+        <module name="device-parser-init" />
         <module name="smart-park-device-parser-starter" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
       <module name="smart-device-parser" options="-parameters" />
       <module name="smart-park" options="-parameters" />
       <module name="smart-park-device-parser" options="-parameters" />
+      <module name="smart-park-device-parser-init" options="-parameters" />
       <module name="smart-park-device-parser-starter" options="-parameters" />
       <module name="starter" options="-parameters" />
     </option>
