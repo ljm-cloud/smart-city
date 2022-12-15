@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="device-parser-functions" />
-        <module name="smart-park-device-parser-init" />
-        <module name="device-parser-init" />
         <module name="smart-park-device-parser-starter" />
+        <module name="device-parser-init" />
+        <module name="smart-park-device-parser-init" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,7 +27,7 @@
       <module name="smart-city" options="-parameters" />
       <module name="smart-device-parser" options="-parameters" />
       <module name="smart-park" options="-parameters" />
-      <module name="smart-park-device-parser" options="-parameters" />
+      <module name="smart-park-device-parser" options="" />
       <module name="smart-park-device-parser-init" options="-parameters" />
       <module name="smart-park-device-parser-starter" options="-parameters" />
       <module name="starter" options="-parameters" />

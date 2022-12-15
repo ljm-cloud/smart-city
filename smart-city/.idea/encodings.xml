@@ -3,7 +3,15 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/smart-device-parser/device-parser-functions/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-device-parser/device-parser-init/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-device-parser/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-device-parser/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-park/smart-park-device-parser/smart-park-device-parser-init/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/smart-park/smart-park-device-parser/smart-park-device-parser-starter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-park/smart-park-device-parser/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-park/smart-park-device-parser/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-park/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/smart-park/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>
