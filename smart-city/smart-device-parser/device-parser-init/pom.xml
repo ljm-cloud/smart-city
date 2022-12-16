@@ -11,5 +11,13 @@
 
     <artifactId>device-parser-init</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>${paho.client.mqttv3.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

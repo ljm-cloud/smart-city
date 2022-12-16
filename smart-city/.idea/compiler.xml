@@ -2,14 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="device-parser-functions" />
-        <module name="smart-park-device-parser-starter" />
-        <module name="device-parser-init" />
         <module name="smart-park-device-parser-init" />
+        <module name="device-parser-init" />
+        <module name="smart-park-device-parser-starter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
