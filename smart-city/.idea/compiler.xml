@@ -8,9 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="device-parser-functions" />
-        <module name="smart-park-device-parser-init" />
-        <module name="device-parser-init" />
         <module name="smart-park-device-parser-starter" />
+        <module name="device-parser-init" />
+        <module name="smart-park-device-parser-init" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
