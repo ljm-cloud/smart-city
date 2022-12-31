@@ -5,6 +5,7 @@ import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import smart.parser.init.iot.protocol.IotMsgClientOption;
 import smart.parser.init.iot.protocol.IotMsgProtocolManager;
+import smart.parser.init.iot.protocol.IotMsgSubscribeOption;
 
 import java.util.Optional;
 
@@ -15,22 +16,25 @@ import java.util.Optional;
 @Slf4j
 public class PahoManager implements IotMsgProtocolManager {
     @Override
-    public Object buildMsgClient(IotMsgClientOption iotMsgClientOption) {
+    public Object buildMsgClient(IotMsgClientOption iotMsgClientOption) throws MqttException {
         PahoClientOption pahoClientOption = (PahoClientOption) iotMsgClientOption;
-        try {
-            MqttAsyncClient client = new MqttAsyncClient(pahoClientOption.getServerURI(),pahoClientOption.getClientId(), Optional.ofNullable(pahoClientOption.getPersistence()).orElseGet(MemoryPersistence::new));
-            MqttConnectOptions connectOptions = new MqttConnectOptions();
-            connectOptions.setUserName(iotMsgClientOption.getUserName());
-            connectOptions.setPassword(iotMsgClientOption.getPassword().toCharArray());
-            connectOptions.setCleanSession(true);
-            client.setCallback(new OnMessageCallback());
-            client.connect(connectOptions);
-            return client;
-        } catch (MqttException e) {
-
-        }
-        return null;
+        MqttAsyncClient client = new MqttAsyncClient(pahoClientOption.getServerURI(),pahoClientOption.getClientId(), Optional.ofNullable(pahoClientOption.getPersistence()).orElseGet(MemoryPersistence::new));
+        MqttConnectOptions connectOptions = new MqttConnectOptions();
+        connectOptions.setUserName(iotMsgClientOption.getUserName());
+        connectOptions.setPassword(iotMsgClientOption.getPassword().toCharArray());
+        connectOptions.setCleanSession(true);
+        client.setCallback(new OnMessageCallback());
+        client.connect(connectOptions);
+        return client;
     }
+
+    @Override
+    public IMqttToken subscribe(IotMsgSubscribeOption iotMsgSubscribeOption) throws MqttException {
+        PahoSubscribeOption pahoSubscribeOption = (PahoSubscribeOption) iotMsgSubscribeOption;
+        MqttAsyncClient client = (MqttAsyncClient) pahoSubscribeOption.getIotMsgClient();
+        return client.subscribe(pahoSubscribeOption.getTopicFilters(),pahoSubscribeOption.getQos(),pahoSubscribeOption.getIMqttMessageListeners());
+    }
+
     static class OnMessageCallback implements MqttCallback {
 
         @Override
