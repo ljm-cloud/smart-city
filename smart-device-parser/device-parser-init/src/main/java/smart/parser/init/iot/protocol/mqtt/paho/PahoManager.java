@@ -5,6 +5,7 @@ import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import smart.parser.init.iot.protocol.IotMsgClientOption;
 import smart.parser.init.iot.protocol.IotMsgProtocolManager;
+import smart.parser.init.iot.protocol.IotMsgPublishOption;
 import smart.parser.init.iot.protocol.IotMsgSubscribeOption;
 
 import java.util.Optional;
@@ -33,6 +34,15 @@ public class PahoManager implements IotMsgProtocolManager {
         PahoSubscribeOption pahoSubscribeOption = (PahoSubscribeOption) iotMsgSubscribeOption;
         MqttAsyncClient client = (MqttAsyncClient) pahoSubscribeOption.getIotMsgClient();
         return client.subscribe(pahoSubscribeOption.getTopicFilters(),pahoSubscribeOption.getQos(),pahoSubscribeOption.getIMqttMessageListeners());
+    }
+
+    @Override
+    public IMqttDeliveryToken publish(IotMsgPublishOption iotMsgPublishOption) throws MqttException {
+        PahoPublishOption pahoPublishOption = (PahoPublishOption) iotMsgPublishOption;
+        MqttAsyncClient client = (MqttAsyncClient) pahoPublishOption.getIotMsgClient();
+        MqttMessage message = new MqttMessage(pahoPublishOption.getPayload());
+        message.setQos(pahoPublishOption.getQos());
+        return client.publish(pahoPublishOption.getTopic(),message);
     }
 
     static class OnMessageCallback implements MqttCallback {
