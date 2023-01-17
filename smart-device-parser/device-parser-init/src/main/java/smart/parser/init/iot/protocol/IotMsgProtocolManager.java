@@ -7,4 +7,5 @@ package smart.parser.init.iot.protocol;
 public interface IotMsgProtocolManager {
     Object buildMsgClient(IotMsgClientOption iotMsgClientOption) throws Exception;
     Object subscribe(IotMsgSubscribeOption iotMsgSubscribeOption) throws Exception;
+    Object publish(IotMsgPublishOption pahoPublishOption) throws Exception;
 }
