@@ -11,5 +11,13 @@
 
     <artifactId>smart-park-device-parser-functions</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>device-parser-functions</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
