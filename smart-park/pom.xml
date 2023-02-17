@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>smart-park-device-parser</module>
+        <module>smart-park-data-center</module>
     </modules>
 
     <dependencies>
