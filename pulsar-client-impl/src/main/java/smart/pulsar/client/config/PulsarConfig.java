@@ -16,4 +16,5 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "smart.pulsar")
 public class PulsarConfig {
     private Map<String,PulsarPublisherConfig> publishers = Collections.emptyMap();
+    private Map<String,PulsarConsumerConfig> consumers = Collections.emptyMap();
 }
