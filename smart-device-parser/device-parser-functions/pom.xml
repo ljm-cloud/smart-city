@@ -22,6 +22,12 @@
             <artifactId>cloudevents-core</artifactId>
             <version>${cloudevent.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.pulsar/pulsar-functions-api -->
+        <dependency>
+            <groupId>org.apache.pulsar</groupId>
+            <artifactId>pulsar-functions-api</artifactId>
+            <version>${pulsar.functions.version}</version>
+        </dependency>
     </dependencies>
 
 
