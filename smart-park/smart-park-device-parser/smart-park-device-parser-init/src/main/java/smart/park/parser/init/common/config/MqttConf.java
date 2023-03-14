@@ -23,4 +23,5 @@ public class MqttConf {
 
     private String caFilePath;
 
+    private String msgHandleType;
 }
