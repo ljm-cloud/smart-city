@@ -18,10 +18,10 @@ import java.util.concurrent.CompletableFuture;
  */
 @Service
 public class PulsarConsumerService extends PulsarBaseService {
-    private final Map<String, PulsarConsumer> pulsarPublisherMap;
+    private final Map<String, PulsarConsumer> pulsarConsumerMap;
     public PulsarConsumerService() {
         super();
-        pulsarPublisherMap = Maps.newHashMap();
+        pulsarConsumerMap = Maps.newHashMap();
     }
     public CompletableFuture<Void> initConsumers(){
         return CompletableFuture.runAsync(()->{
@@ -33,7 +33,7 @@ public class PulsarConsumerService extends PulsarBaseService {
                     pulsarClientManager.build(pulsarConsumerConfig.getServiceUrl())
                             .thenApply(pulsarClient -> new PulsarConsumer(name,pulsarConsumerConfig.getTopicPrefix(),pulsarConsumerConfig.getTopicSuffix(),pulsarClient))
                             .thenAccept(pulsarConsumer -> {
-                                pulsarPublisherMap.put(name,pulsarConsumer);
+                                pulsarConsumerMap.put(name,pulsarConsumer);
                                 pulsarConsumer.consumer(pulsarConsumerConfig.getTopics());
                             });
                 }
@@ -41,6 +41,6 @@ public class PulsarConsumerService extends PulsarBaseService {
         });
     }
     public void subscribe(String consumerName, List<String> topics){
-        Optional.ofNullable(pulsarPublisherMap.get(consumerName)).ifPresent(pulsarConsumer -> pulsarConsumer.consumer(topics));
+        Optional.ofNullable(pulsarConsumerMap.get(consumerName)).ifPresent(pulsarConsumer -> pulsarConsumer.consumer(topics));
     }
 }
