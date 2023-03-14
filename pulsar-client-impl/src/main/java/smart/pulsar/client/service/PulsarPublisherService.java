@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import smart.pulsar.client.producer.PulsarPublisher;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -30,7 +31,6 @@ public class PulsarPublisherService extends PulsarBaseService {
         });
     }
     public void publish(String publisherName,String topic,byte[] message){
-        PulsarPublisher pulsarPublisher = pulsarPublisherMap.get(publisherName);
-        pulsarPublisher.publish(topic, message);
+        Optional.ofNullable(pulsarPublisherMap.get(publisherName)).ifPresent(pulsarPublisher -> pulsarPublisher.publish(topic, message));
     }
 }
