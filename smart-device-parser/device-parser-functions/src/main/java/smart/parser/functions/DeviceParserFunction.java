@@ -7,5 +7,7 @@ import io.cloudevents.CloudEvent;
  * @date 2022/12/2 18:03
  */
 public interface DeviceParserFunction {
-    void parser(CloudEvent cloudEvent);
+//    void parser(CloudEvent cloudEvent);
+    String getParserTopicInput();
+    String getParserTopicOutput();
 }
