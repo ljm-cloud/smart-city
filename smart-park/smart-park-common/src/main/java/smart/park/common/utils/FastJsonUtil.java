@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JSONUtils {
+public class FastJsonUtil {
 	/**
 	 * Bean对象转JSON
 	 * 
@@ -79,7 +79,7 @@ public class JSONUtils {
 		return JSON.parseObject(json);
 	}
 
-	public static Object jsonToBean(String json, Class clazz) {
+	public static <T> T jsonToBean(String json, Class<T> clazz) {
 		if (StringUtils.isEmpty(json) || clazz == null) {
 			return null;
 		}
@@ -90,16 +90,15 @@ public class JSONUtils {
 		return (T) jsonToBean(beanToJson(obj),type);
 	}
 
-	public static Object jsonToBean(String json, Class clazz, Feature... features) {
+	public static <T> T jsonToBean(String json, Class<T> clazz, Feature... features) {
 		if (StringUtils.isEmpty(json) || clazz == null) {
 			return null;
 		}
 		return JSON.parseObject(json, clazz,features);
 	}
 
-	public static List jsonToList(String json, Class clazz){
-		List parseArray = JSON.parseArray(json, clazz);//集合类型，使用parseArray进行解析
-		return parseArray;
+	public static <T> List<T> jsonToList(String json, Class<T> clazz){
+		return JSON.parseArray(json, clazz);
 	}
 
 	public static Map<String, Object> beanToMap(Object bean){

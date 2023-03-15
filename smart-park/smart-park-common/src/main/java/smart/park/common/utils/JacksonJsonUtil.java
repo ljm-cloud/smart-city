@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JacksonJsonUtils{
+public class JacksonJsonUtil {
 
     public static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
         ObjectMapper mapper = new ObjectMapper();
