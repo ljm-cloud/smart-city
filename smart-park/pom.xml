@@ -17,6 +17,10 @@
         <module>smart-park-common</module>
     </modules>
 
+    <properties>
+        <com.alibaba.fastjson.version>1.2.83</com.alibaba.fastjson.version>
+    </properties>
+
     <dependencies>
         <!-- springboot -->
         <dependency>
