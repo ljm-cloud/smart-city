@@ -2,6 +2,7 @@ package smart.park.parser.functions.impls.aq;
 
 import org.apache.pulsar.functions.api.Context;
 import org.apache.pulsar.functions.api.Function;
+import org.springframework.stereotype.Component;
 import smart.park.common.dto.BaseMsg;
 import smart.park.common.dto.ParserInput;
 import smart.park.parser.functions.impls.AbstractDeviceParserFunctionImpl;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
  * @author ljm
  * @date 2023/2/17 11:48
  */
+@Component
 public class AqParserFunctionImpl extends AbstractDeviceParserFunctionImpl implements Function<ParserInput, BaseMsg> {
 
     @Override
@@ -84,5 +86,10 @@ public class AqParserFunctionImpl extends AbstractDeviceParserFunctionImpl imple
     @Override
     public String getParserTopicOutput() {
         return "smp_aq_parser_output";
+    }
+
+    @Override
+    public Integer getFPort() {
+        return 101;
     }
 }

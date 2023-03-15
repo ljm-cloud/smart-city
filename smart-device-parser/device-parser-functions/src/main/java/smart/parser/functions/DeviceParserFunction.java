@@ -10,4 +10,5 @@ public interface DeviceParserFunction {
 //    void parser(CloudEvent cloudEvent);
     String getParserTopicInput();
     String getParserTopicOutput();
+    Integer getFPort();
 }

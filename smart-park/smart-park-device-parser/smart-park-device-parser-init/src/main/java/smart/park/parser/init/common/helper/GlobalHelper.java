@@ -1,5 +1,6 @@
 package smart.park.parser.init.common.helper;
 
+import smart.park.parser.functions.impls.AbstractDeviceParserFunctionImpl;
 import smart.park.parser.init.handle.message.iot.AbsIotMessageHandle;
 
 import java.util.Collections;
@@ -11,4 +12,5 @@ import java.util.Map;
  */
 public class GlobalHelper {
     public static Map<String, AbsIotMessageHandle> iotMessageHandleMap = Collections.emptyMap();
+    public static Map<Integer, AbstractDeviceParserFunctionImpl> deviceParserFunctionMap = Collections.emptyMap();
 }
