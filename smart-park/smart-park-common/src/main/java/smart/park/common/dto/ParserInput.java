@@ -1,6 +1,7 @@
 package smart.park.common.dto;
 
 import lombok.Data;
+import smart.park.common.utils.Base64Helper;
 
 /**
  * @author ljm
@@ -38,6 +39,10 @@ public class ParserInput {
         }
         public Builder datas(byte[] datas){
             this.datas = datas;
+            return this;
+        }
+        public Builder datas(String base64Str){
+            this.datas = Base64Helper.decode(base64Str);
             return this;
         }
         public Builder fCnt(Integer fCnt){
