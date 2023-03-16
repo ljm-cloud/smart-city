@@ -1,11 +1,13 @@
 package smart.park.parser.functions.impls;
 
-import smart.parser.functions.DeviceParserFunction;
+import org.apache.pulsar.functions.api.Function;
+import smart.park.common.dto.BaseMsg;
+import smart.park.common.dto.ParserInput;
 
 /**
  * @author ljm
  * @date 2023/2/9 17:28
  */
-public abstract class AbstractDeviceParserFunctionImpl implements DeviceParserFunction {
+public abstract class AbstractDeviceParserFunctionImpl implements Function<ParserInput, BaseMsg> {
     
 }
