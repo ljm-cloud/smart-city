@@ -5,7 +5,6 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import smart.park.common.provider.SmartParkApplicationContextProvider;
-import smart.park.parser.functions.impls.AbstractDeviceParserFunctionImpl;
 import smart.park.parser.init.common.helper.GlobalHelper;
 import smart.park.parser.init.handle.message.iot.AbsIotMessageHandle;
 import smart.park.parser.init.service.InitParserService;
@@ -25,7 +24,6 @@ public class ApplicationReadyEventListener implements ApplicationListener<Applic
         log.info("Smart-park-device-parser-init applicationReadyEvent start...");
         SmartParkApplicationContextProvider.getBean(PulsarPublisherService.class).initPublishers()
                 .thenRun(()-> GlobalHelper.iotMessageHandleMap = SmartParkApplicationContextProvider.getApplicationContext().getBeansOfType(AbsIotMessageHandle.class).values().stream().collect(Collectors.toMap(AbsIotMessageHandle::handleType, Function.identity())))
-                .thenRun(()->GlobalHelper.deviceParserFunctionMap = SmartParkApplicationContextProvider.getApplicationContext().getBeansOfType(AbstractDeviceParserFunctionImpl.class).values().stream().collect(Collectors.toMap(AbstractDeviceParserFunctionImpl::getFPort,Function.identity())))
                 .thenRun(()->SmartParkApplicationContextProvider.getBean(InitParserService.class).initMqtt());
         log.info("Smart-park-device-parser-init applicationReadyEvent end...");
     }
