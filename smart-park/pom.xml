@@ -15,6 +15,7 @@
         <module>smart-park-device-parser</module>
         <module>smart-park-data-center</module>
         <module>smart-park-common</module>
+        <module>smart-park-base</module>
     </modules>
 
     <properties>
