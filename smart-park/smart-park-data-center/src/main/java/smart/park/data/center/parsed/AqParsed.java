@@ -14,4 +14,16 @@ public class AqParsed extends AbstractParsed {
     public DeviceType getDeviceType() {
         return DeviceType.AQ;
     }
+
+    @Override
+    protected boolean parse() {
+        //推送实时数据
+        //存储时序数据库
+        return true;
+    }
+
+    @Override
+    public AbstractParsed newParser() {
+        return new AqParsed();
+    }
 }

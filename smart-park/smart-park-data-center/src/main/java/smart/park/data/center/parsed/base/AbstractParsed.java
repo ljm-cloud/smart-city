@@ -9,4 +9,8 @@ import smart.park.common.config.DeviceType;
 public abstract class AbstractParsed {
 
     public abstract DeviceType getDeviceType();
+
+    protected abstract boolean parse();
+
+    public abstract AbstractParsed newParser();
 }
