@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="park.base.mybatis.plus.mapper.TWcMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="park.base.mybatis.plus.entity.TWc">
+        <id column="id" property="id" />
+        <result column="unit_id" property="unitId" />
+        <result column="unit_name" property="unitName" />
+        <result column="wc_name" property="wcName" />
+        <result column="street_name" property="streetName" />
+        <result column="owner_type" property="ownerType" />
+        <result column="building_name" property="buildingName" />
+        <result column="floor" property="floor" />
+        <result column="address" property="address" />
+        <result column="completed_time" property="completedTime" />
+        <result column="create_time" property="createTime" />
+        <result column="principal" property="principal" />
+        <result column="lng" property="lng" />
+        <result column="lat" property="lat" />
+        <result column="is_repair" property="isRepair" />
+        <result column="admin_phone" property="adminPhone" />
+        <result column="is_del" property="isDel" />
+        <result column="wc_no" property="wcNo" />
+        <result column="guidance_url" property="guidanceUrl" />
+        <result column="construction_url" property="constructionUrl" />
+        <result column="phone_url" property="phoneUrl" />
+        <result column="timelaps01_url" property="timelaps01Url" />
+        <result column="timelaps02_url" property="timelaps02Url" />
+        <result column="timelaps03_url" property="timelaps03Url" />
+        <result column="timelaps04_url" property="timelaps04Url" />
+        <result column="timelaps05_url" property="timelaps05Url" />
+        <result column="timelaps06_url" property="timelaps06Url" />
+        <result column="building_id" property="buildingId" />
+        <result column="company_id" property="companyId" />
+        <result column="creater_id" property="createrId" />
+        <result column="park_name" property="parkName" />
+        <result column="park_no" property="parkNo" />
+        <result column="park_sub_no" property="parkSubNo" />
+        <result column="first_name" property="firstName" />
+        <result column="second_name" property="secondName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, unit_id, unit_name, wc_name, street_name, owner_type, building_name, floor, address, completed_time, create_time, principal, lng, lat, is_repair, admin_phone, is_del, wc_no, guidance_url, construction_url, phone_url, timelaps01_url, timelaps02_url, timelaps03_url, timelaps04_url, timelaps05_url, timelaps06_url, building_id, company_id, creater_id, park_name, park_no, park_sub_no, first_name, second_name
+    </sql>
+
+</mapper>

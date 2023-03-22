@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="park.base.mybatis.plus.mapper.TDeviceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="park.base.mybatis.plus.entity.TDevice">
+        <id column="id" property="id" />
+        <result column="wc_id" property="wcId" />
+        <result column="wc_detail_id" property="wcDetailId" />
+        <result column="position_id" property="positionId" />
+        <result column="version" property="version" />
+        <result column="device_name" property="deviceName" />
+        <result column="device_type" property="deviceType" />
+        <result column="device_id" property="deviceId" />
+        <result column="creater_id" property="createrId" />
+        <result column="create_time" property="createTime" />
+        <result column="is_del" property="isDel" />
+        <result column="last_active" property="lastActive" />
+        <result column="online" property="online" />
+        <result column="update_time" property="updateTime" />
+        <result column="offline_time" property="offlineTime" />
+        <result column="pid" property="pid" />
+        <result column="ptype" property="ptype" />
+        <result column="partner_id" property="partnerId" />
+        <result column="appid" property="appid" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, wc_id, wc_detail_id, position_id, version, device_name, device_type, device_id, creater_id, create_time, is_del, last_active, online, update_time, offline_time, pid, ptype, partner_id, appid
+    </sql>
+
+</mapper>

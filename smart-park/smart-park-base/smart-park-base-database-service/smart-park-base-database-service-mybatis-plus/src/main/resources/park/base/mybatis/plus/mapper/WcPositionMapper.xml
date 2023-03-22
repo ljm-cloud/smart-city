@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="park.base.mybatis.plus.mapper.WcPositionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="park.base.mybatis.plus.entity.WcPosition">
+        <id column="id" property="id" />
+        <result column="wc_id" property="wcId" />
+        <result column="wc_detail_id" property="wcDetailId" />
+        <result column="type" property="type" />
+        <result column="position" property="position" />
+        <result column="house_no" property="houseNo" />
+        <result column="create_time" property="createTime" />
+        <result column="number" property="number" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, wc_id, wc_detail_id, type, position, house_no, create_time, number
+    </sql>
+
+</mapper>
