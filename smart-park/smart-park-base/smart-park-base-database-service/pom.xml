@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>smart-park-base-database-service-mybatis-plus</module>
+        <module>smart-park-base-database-service-tk-mybatis</module>
     </modules>
 
     <dependencies>
