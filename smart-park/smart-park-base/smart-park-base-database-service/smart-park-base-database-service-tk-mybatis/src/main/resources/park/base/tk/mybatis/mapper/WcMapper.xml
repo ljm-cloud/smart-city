@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="park.base.tk.mybatis.mapper.WcMapper">
+  <resultMap id="BaseResultMap" type="park.base.tk.mybatis.entity.Wc">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="unit_id" jdbcType="INTEGER" property="unitId" />
+    <result column="unit_name" jdbcType="VARCHAR" property="unitName" />
+    <result column="wc_name" jdbcType="VARCHAR" property="wcName" />
+    <result column="street_name" jdbcType="VARCHAR" property="streetName" />
+    <result column="owner_type" jdbcType="VARCHAR" property="ownerType" />
+    <result column="building_name" jdbcType="VARCHAR" property="buildingName" />
+    <result column="floor" jdbcType="VARCHAR" property="floor" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="completed_time" jdbcType="DATE" property="completedTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="principal" jdbcType="VARCHAR" property="principal" />
+    <result column="lng" jdbcType="DOUBLE" property="lng" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="is_repair" jdbcType="BIT" property="isRepair" />
+    <result column="admin_phone" jdbcType="VARCHAR" property="adminPhone" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="wc_no" jdbcType="VARCHAR" property="wcNo" />
+    <result column="guidance_url" jdbcType="VARCHAR" property="guidanceUrl" />
+    <result column="construction_url" jdbcType="VARCHAR" property="constructionUrl" />
+    <result column="phone_url" jdbcType="VARCHAR" property="phoneUrl" />
+    <result column="timelaps01_url" jdbcType="VARCHAR" property="timelaps01Url" />
+    <result column="timelaps02_url" jdbcType="VARCHAR" property="timelaps02Url" />
+    <result column="timelaps03_url" jdbcType="VARCHAR" property="timelaps03Url" />
+    <result column="timelaps04_url" jdbcType="VARCHAR" property="timelaps04Url" />
+    <result column="timelaps05_url" jdbcType="VARCHAR" property="timelaps05Url" />
+    <result column="timelaps06_url" jdbcType="VARCHAR" property="timelaps06Url" />
+    <result column="building_id" jdbcType="INTEGER" property="buildingId" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="creater_id" jdbcType="INTEGER" property="createrId" />
+    <result column="park_name" jdbcType="VARCHAR" property="parkName" />
+    <result column="park_no" jdbcType="VARCHAR" property="parkNo" />
+    <result column="park_sub_no" jdbcType="VARCHAR" property="parkSubNo" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="second_name" jdbcType="VARCHAR" property="secondName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, unit_id, unit_name, wc_name, street_name, owner_type, building_name, floor, address, 
+    completed_time, create_time, principal, lng, lat, is_repair, admin_phone, is_del, 
+    wc_no, guidance_url, construction_url, phone_url, timelaps01_url, timelaps02_url, 
+    timelaps03_url, timelaps04_url, timelaps05_url, timelaps06_url, building_id, company_id, 
+    creater_id, park_name, park_no, park_sub_no, first_name, second_name
+  </sql>
+  <select id="selectByExample" parameterType="park.base.tk.mybatis.entity.WcExample" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_wc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="park.base.tk.mybatis.entity.WcExample">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from t_wc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="park.base.tk.mybatis.entity.WcExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_wc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update t_wc
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitId != null">
+        unit_id = #{record.unitId,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitName != null">
+        unit_name = #{record.unitName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wcName != null">
+        wc_name = #{record.wcName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.streetName != null">
+        street_name = #{record.streetName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownerType != null">
+        owner_type = #{record.ownerType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildingName != null">
+        building_name = #{record.buildingName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floor != null">
+        floor = #{record.floor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.completedTime != null">
+        completed_time = #{record.completedTime,jdbcType=DATE},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.principal != null">
+        principal = #{record.principal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lng != null">
+        lng = #{record.lng,jdbcType=DOUBLE},
+      </if>
+      <if test="record.lat != null">
+        lat = #{record.lat,jdbcType=DOUBLE},
+      </if>
+      <if test="record.isRepair != null">
+        is_repair = #{record.isRepair,jdbcType=BIT},
+      </if>
+      <if test="record.adminPhone != null">
+        admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=BIT},
+      </if>
+      <if test="record.wcNo != null">
+        wc_no = #{record.wcNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.guidanceUrl != null">
+        guidance_url = #{record.guidanceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.constructionUrl != null">
+        construction_url = #{record.constructionUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phoneUrl != null">
+        phone_url = #{record.phoneUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps01Url != null">
+        timelaps01_url = #{record.timelaps01Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps02Url != null">
+        timelaps02_url = #{record.timelaps02Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps03Url != null">
+        timelaps03_url = #{record.timelaps03Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps04Url != null">
+        timelaps04_url = #{record.timelaps04Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps05Url != null">
+        timelaps05_url = #{record.timelaps05Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timelaps06Url != null">
+        timelaps06_url = #{record.timelaps06Url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buildingId != null">
+        building_id = #{record.buildingId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null">
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.createrId != null">
+        creater_id = #{record.createrId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parkName != null">
+        park_name = #{record.parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parkNo != null">
+        park_no = #{record.parkNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parkSubNo != null">
+        park_sub_no = #{record.parkSubNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstName != null">
+        first_name = #{record.firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.secondName != null">
+        second_name = #{record.secondName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update t_wc
+    set id = #{record.id,jdbcType=INTEGER},
+      unit_id = #{record.unitId,jdbcType=INTEGER},
+      unit_name = #{record.unitName,jdbcType=VARCHAR},
+      wc_name = #{record.wcName,jdbcType=VARCHAR},
+      street_name = #{record.streetName,jdbcType=VARCHAR},
+      owner_type = #{record.ownerType,jdbcType=VARCHAR},
+      building_name = #{record.buildingName,jdbcType=VARCHAR},
+      floor = #{record.floor,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      completed_time = #{record.completedTime,jdbcType=DATE},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      principal = #{record.principal,jdbcType=VARCHAR},
+      lng = #{record.lng,jdbcType=DOUBLE},
+      lat = #{record.lat,jdbcType=DOUBLE},
+      is_repair = #{record.isRepair,jdbcType=BIT},
+      admin_phone = #{record.adminPhone,jdbcType=VARCHAR},
+      is_del = #{record.isDel,jdbcType=BIT},
+      wc_no = #{record.wcNo,jdbcType=VARCHAR},
+      guidance_url = #{record.guidanceUrl,jdbcType=VARCHAR},
+      construction_url = #{record.constructionUrl,jdbcType=VARCHAR},
+      phone_url = #{record.phoneUrl,jdbcType=VARCHAR},
+      timelaps01_url = #{record.timelaps01Url,jdbcType=VARCHAR},
+      timelaps02_url = #{record.timelaps02Url,jdbcType=VARCHAR},
+      timelaps03_url = #{record.timelaps03Url,jdbcType=VARCHAR},
+      timelaps04_url = #{record.timelaps04Url,jdbcType=VARCHAR},
+      timelaps05_url = #{record.timelaps05Url,jdbcType=VARCHAR},
+      timelaps06_url = #{record.timelaps06Url,jdbcType=VARCHAR},
+      building_id = #{record.buildingId,jdbcType=INTEGER},
+      company_id = #{record.companyId,jdbcType=INTEGER},
+      creater_id = #{record.createrId,jdbcType=INTEGER},
+      park_name = #{record.parkName,jdbcType=VARCHAR},
+      park_no = #{record.parkNo,jdbcType=VARCHAR},
+      park_sub_no = #{record.parkSubNo,jdbcType=VARCHAR},
+      first_name = #{record.firstName,jdbcType=VARCHAR},
+      second_name = #{record.secondName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

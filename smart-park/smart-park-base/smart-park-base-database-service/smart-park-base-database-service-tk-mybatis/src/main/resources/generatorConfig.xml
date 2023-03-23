@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 使用 mvn mybatis-generator:generate -->
+<generatorConfiguration>
+    <!-- 引入数据库连接配置 -->
+    <properties resource="jdbc.properties"/>
+    <context id="mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 设置使用UTF-8编码格式 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- plugin -->
+        <!--<plugin type="org.mybatis.generator.plugins.CachePlugin"/>-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="false"/>
+        </plugin>
+
+        <!--        &lt;!&ndash; 取消生成的代码注释 &ndash;&gt;-->
+        <!--        <commentGenerator type="org.mybatis.generator.internal.DefaultCommentGenerator">-->
+        <!--            <property name="suppressAllComments" value="false"/>-->
+        <!--            <property name="suppressDate" value="true"/>-->
+        <!--            &lt;!&ndash; 此处为 true 时，生成的 Model 包含对应表字段注释 &ndash;&gt;-->
+        <!--            <property name="addRemarkComments" value="true"/>-->
+        <!--        </commentGenerator>-->
+
+        <!-- 连接配置 -->
+        <jdbcConnection driverClass="${jdbcConnection.driverClass}"
+                        connectionURL="${jdbcConnection.connectionURL}"
+                        userId="${jdbcConnection.userId}"
+                        password="${jdbcConnection.password}">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <!-- java类型处理器
+            用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+            注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型；
+        -->
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <!--
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- javaModelGenerator是模型的生成信息，这里将指定这些Java model类的生成路径 -->
+        <javaModelGenerator targetPackage="park.base.tk.mybatis.entity"
+                            targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成Mapper 配置文件 -->
+        <sqlMapGenerator targetPackage="park.base.tk.mybatis.mapper"
+                         targetProject="src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- javaClientGenerator是应用接口的生成信息 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="park.base.tk.mybatis.mapper"
+                             targetProject="src/main/java">
+        </javaClientGenerator>
+
+        <table tableName="%">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <domainObjectRenamingRule searchString="^T" replaceString=""/>
+        </table>
+
+        <!--        &lt;!&ndash;用户表&ndash;&gt;-->
+        <!--        <table tableName="manage_user" domainObjectName="ManageUser"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备报修&ndash;&gt;-->
+        <!--        <table tableName="t_device_fix" domainObjectName="DeviceFix"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;空气检测表&ndash;&gt;-->
+        <!--        <table tableName="t_environmental_data" domainObjectName="EnvironmentalData"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;星级评论表&ndash;&gt;-->
+        <!--        <table tableName="t_evaluate" domainObjectName="Evaluate"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;巡检表&ndash;&gt;-->
+        <!--        <table tableName="t_inspection" domainObjectName="Inspection"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;人员表&ndash;&gt;-->
+        <!--        <table tableName="t_personnel" domainObjectName="Personnel"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;单位表&ndash;&gt;-->
+        <!--        <table tableName="t_regional_units" domainObjectName="RegionalUnits"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;排污表&ndash;&gt;-->
+        <!--        <table tableName="t_sewage" domainObjectName="Sewage"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;人流量表&ndash;&gt;-->
+        <!--        <table tableName="t_traffic_statistics" domainObjectName="TrafficStatistics"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;水量表&ndash;&gt;-->
+        <!--        <table tableName="t_water" domainObjectName="Water"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;公厕表&ndash;&gt;-->
+        <!--        <table tableName="t_wc" domainObjectName="Wc"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        &lt;!&ndash;能源表&ndash;&gt;-->
+        <!--        <table tableName="t_energy" domainObjectName="Energy"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备摄像头表&ndash;&gt;-->
+        <!--        <table tableName="t_device" domainObjectName="Device"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备空气检测表&ndash;&gt;-->
+        <!--        <table tableName="t_device_environmental" domainObjectName="DeviceEnvironmental"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备电表&ndash;&gt;-->
+        <!--        <table tableName="t_device_electricity" domainObjectName="DeviceElectricity"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备排污表&ndash;&gt;-->
+        <!--        <table tableName="t_device_sewage" domainObjectName="DeviceSewage"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+        <!--        &lt;!&ndash;设备水表&ndash;&gt;-->
+        <!--        <table tableName="t_device_water" domainObjectName="DeviceWater"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        &lt;!&ndash;客流日表&ndash;&gt;-->
+        <!--        <table tableName="t_day_report" domainObjectName="DayReport"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        &lt;!&ndash;客流月报&ndash;&gt;-->
+        <!--        <table tableName="t_month_report" domainObjectName="MonthReport"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+        <!--        &lt;!&ndash;客流年报&ndash;&gt;-->
+        <!--        <table tableName="t_year_report" domainObjectName="YearReport"-->
+        <!--               enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--            <property name="useActualColumnNames" value="false"/>-->
+        <!--            <property name="selectAllOrderByClause" value="true"/>-->
+        <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--        </table>-->
+
+
+
+        <!--<table tableName="t_advertising" domainObjectName="Advertising"-->
+        <!--enableCountByExample="false" enableUpdateByExample="false"-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false">-->
+        <!--<property name="useActualColumnNames" value="false"/>-->
+        <!--<property name="selectAllOrderByClause" value="true"/>-->
+        <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+
+
+
+
+
+
+        <!-- <table tableName="t_security" domainObjectName="Security"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false">
+             <property name="useActualColumnNames" value="false"/>
+             <property name="selectAllOrderByClause" value="true"/>
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>
+
+         <table tableName="t_complaint" domainObjectName="Complaint"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false">
+             <property name="useActualColumnNames" value="false"/>
+             <property name="selectAllOrderByClause" value="true"/>
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>
+
+
+
+         <table tableName="t_device_fix" domainObjectName="DeviceFix"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false">
+             <property name="useActualColumnNames" value="false"/>
+             <property name="selectAllOrderByClause" value="true"/>
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>
+
+         <table tableName="manage_suggestions" domainObjectName="ManageSuggestions"
+                enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false">
+             <property name="useActualColumnNames" value="false"/>
+             <property name="selectAllOrderByClause" value="true"/>
+             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+         </table>
+         -->
+    </context>
+</generatorConfiguration>
