@@ -26,4 +26,9 @@ public class AqParsed extends AbstractParsed {
     public AbstractParsed newParser() {
         return new AqParsed();
     }
+
+    @Override
+    public String getParserTopicOutput() {
+        return "smp_aq_parser_output";
+    }
 }
