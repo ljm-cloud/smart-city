@@ -2,7 +2,6 @@ package smart.pulsar.client.consumer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.pulsar.client.api.Consumer;
 import org.apache.pulsar.client.api.PulsarClient;
 import smart.pulsar.client.common.PulsarGlobalHelper;
 
@@ -49,7 +48,7 @@ public class PulsarConsumer {
                         if (StringUtils.isNotBlank(topicSuffix)){
                             topic = topic.replaceAll(topicSuffix,"");
                         }
-                        Optional.ofNullable(PulsarGlobalHelper.handlerMap.get(topic)).ifPresent(abstractHandler -> abstractHandler.doHandle(msg.getData()));
+                        Optional.ofNullable(PulsarGlobalHelper.handlerMap.get(topic)).ifPresent(subscribeMsgHandlerI -> subscribeMsgHandlerI.handle(msg.getData()));
                         try {
                             consumer.acknowledge(msg.getMessageId());
                         }catch (Exception e){

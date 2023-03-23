@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import smart.pulsar.client.common.PulsarClientApplicationContextProvider;
 import smart.pulsar.client.common.PulsarGlobalHelper;
 import smart.pulsar.client.consumer.PulsarConsumer;
-import smart.pulsar.client.consumer.handler.AbstractHandler;
+import smart.pulsar.client.consumer.handler.SubscribeMsgHandlerI;
 
 import java.util.List;
 import java.util.Map;
@@ -25,7 +25,7 @@ public class PulsarConsumerService extends PulsarBaseService {
     }
     public CompletableFuture<Void> initConsumers(){
         return CompletableFuture.runAsync(()->{
-            Map<String,AbstractHandler> abstractHandlerMap = PulsarClientApplicationContextProvider.getApplicationContext().getBeansOfType(AbstractHandler.class);
+            Map<String, SubscribeMsgHandlerI> abstractHandlerMap = PulsarClientApplicationContextProvider.getApplicationContext().getBeansOfType(SubscribeMsgHandlerI.class);
             PulsarGlobalHelper.handlerMap = Maps.newHashMap();
             abstractHandlerMap.values().forEach(abstractHandler -> PulsarGlobalHelper.handlerMap.put(abstractHandler.getTopic(),abstractHandler));
             pulsarConfig.getConsumers().forEach((name,pulsarConsumerConfig)->{
