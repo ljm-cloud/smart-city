@@ -13,7 +13,7 @@ public abstract class AbstractParsed implements SubscribeMsgHandlerI {
 
     public abstract DeviceType getDeviceType();
 
-    protected abstract boolean parse(ParserOutput parserOutput);
+    protected abstract void parse(ParserOutput parserOutput);
 
     public abstract AbstractParsed newParser();
 

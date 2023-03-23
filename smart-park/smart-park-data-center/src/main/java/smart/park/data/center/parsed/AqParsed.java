@@ -17,10 +17,9 @@ public class AqParsed extends AbstractParsed {
     }
 
     @Override
-    protected boolean parse(ParserOutput parserOutput) {
+    protected void parse(ParserOutput parserOutput) {
         //推送实时数据
         //存储时序数据库
-        return true;
     }
 
     @Override
