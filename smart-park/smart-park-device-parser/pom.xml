@@ -17,5 +17,12 @@
         <module>smart-park-device-parser-functions</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-park-common</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>

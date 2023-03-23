@@ -11,5 +11,12 @@
 
     <artifactId>smart-park-data-center</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>smart-park-common</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
