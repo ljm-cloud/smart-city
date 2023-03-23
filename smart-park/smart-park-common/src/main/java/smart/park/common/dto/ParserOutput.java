@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Data
 @Slf4j
-public class BaseMsg {
+public class ParserOutput {
     private String deviceId;
     private Map<String,Object> data;
     private Long timestamp;
@@ -18,13 +18,13 @@ public class BaseMsg {
     private Integer fCnt;
     private Integer dr;
 
-    public BaseMsg(boolean initMap){
+    public ParserOutput(boolean initMap){
         if(initMap) {
             this.data = Maps.newHashMap();
         }
     }
 
-    public BaseMsg(ParserInput input){
+    public ParserOutput(ParserInput input){
         this(true);
         try {
             BeanUtils.copyProperties(this,input);
@@ -33,7 +33,7 @@ public class BaseMsg {
         }
     }
 
-    public BaseMsg(){
+    public ParserOutput(){
         this(true);
     }
 

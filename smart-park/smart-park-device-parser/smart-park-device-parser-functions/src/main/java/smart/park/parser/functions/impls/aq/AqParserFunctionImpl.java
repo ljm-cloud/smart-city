@@ -1,7 +1,7 @@
 package smart.park.parser.functions.impls.aq;
 
 import org.apache.pulsar.functions.api.Context;
-import smart.park.common.dto.BaseMsg;
+import smart.park.common.dto.ParserOutput;
 import smart.park.common.dto.ParserInput;
 import smart.park.parser.functions.impls.AbstractDeviceParserFunctionImpl;
 import java.math.BigDecimal;
@@ -13,8 +13,8 @@ import java.math.BigDecimal;
 public class AqParserFunctionImpl extends AbstractDeviceParserFunctionImpl {
 
     @Override
-    public BaseMsg process(ParserInput input, Context context) throws Exception {
-        BaseMsg baseMsg = new BaseMsg(input);
+    public ParserOutput process(ParserInput input, Context context) throws Exception {
+        ParserOutput parserOutput = new ParserOutput(input);
         StringBuffer stringBuffer = new StringBuffer();
         byte[] datas = input.getDatas();
         int fh = (datas[0] & 0xff);
@@ -48,16 +48,16 @@ public class AqParserFunctionImpl extends AbstractDeviceParserFunctionImpl {
         int pm25 = (datas[14] & 0xff) * 256 + (datas[15] & 0xff);
 
         int pm10 = (datas[16] & 0xff) * 256 + (datas[17] & 0xff);
-        baseMsg.getData().put("temperature", temper);
-        baseMsg.getData().put("humidity", humidity);
-        baseMsg.getData().put("nh3", nh3);
-        baseMsg.getData().put("h2s", h2s);
-        baseMsg.getData().put("ch2o", ch2o);
-        baseMsg.getData().put("co2", co2);
-        baseMsg.getData().put("tvoc", tvoc);
-        baseMsg.getData().put("pm25", pm25);
-        baseMsg.getData().put("pm10", pm10);
-        return baseMsg;
+        parserOutput.getData().put("temperature", temper);
+        parserOutput.getData().put("humidity", humidity);
+        parserOutput.getData().put("nh3", nh3);
+        parserOutput.getData().put("h2s", h2s);
+        parserOutput.getData().put("ch2o", ch2o);
+        parserOutput.getData().put("co2", co2);
+        parserOutput.getData().put("tvoc", tvoc);
+        parserOutput.getData().put("pm25", pm25);
+        parserOutput.getData().put("pm10", pm10);
+        return parserOutput;
     }
 
     public static BigDecimal getAqData(StringBuffer stringBuffer, byte data, byte pointData) {
