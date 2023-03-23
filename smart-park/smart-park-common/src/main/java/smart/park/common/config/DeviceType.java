@@ -10,7 +10,20 @@ public enum DeviceType {
     private final Integer value;
     private final String name;
     private final Integer version;
-    DeviceType(Integer value,String name,Integer version){
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    DeviceType(Integer value, String name, Integer version){
         this.value = value;
         this.name = name;
         this.version = version;
