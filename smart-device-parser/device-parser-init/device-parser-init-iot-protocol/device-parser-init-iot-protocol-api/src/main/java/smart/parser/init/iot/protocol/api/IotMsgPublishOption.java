@@ -1,4 +1,4 @@
-package smart.parser.init.iot.protocol;
+package smart.parser.init.iot.protocol.api;
 
 import lombok.Data;
 
