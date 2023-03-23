@@ -49,7 +49,6 @@ public class PulsarConsumer {
                         if (StringUtils.isNotBlank(topicSuffix)){
                             topic = topic.replaceAll(topicSuffix,"");
                         }
-                        msg.getData();
                         Optional.ofNullable(PulsarGlobalHelper.handlerMap.get(topic)).ifPresent(abstractHandler -> abstractHandler.doHandle(msg.getData()));
                         try {
                             consumer.acknowledge(msg.getMessageId());
