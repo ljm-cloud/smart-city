@@ -2,6 +2,7 @@ package smart.park.data.center.parsed;
 
 import org.springframework.stereotype.Service;
 import smart.park.common.config.DeviceType;
+import smart.park.common.dto.ParserOutput;
 import smart.park.data.center.parsed.base.AbstractParsed;
 
 /**
@@ -16,7 +17,7 @@ public class AqParsed extends AbstractParsed {
     }
 
     @Override
-    protected boolean parse() {
+    protected boolean parse(ParserOutput parserOutput) {
         //推送实时数据
         //存储时序数据库
         return true;
