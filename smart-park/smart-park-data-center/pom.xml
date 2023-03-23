@@ -16,6 +16,11 @@
             <groupId>com.smart</groupId>
             <artifactId>smart-park-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.smart</groupId>
+            <artifactId>pulsar-client-impl</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 
