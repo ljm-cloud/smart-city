@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.smart</groupId>
-            <artifactId>device-parser-init-iot-mqtt-paho</artifactId>
+            <artifactId>device-parser-init</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
