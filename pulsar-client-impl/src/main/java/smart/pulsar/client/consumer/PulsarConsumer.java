@@ -3,6 +3,7 @@ package smart.pulsar.client.consumer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.pulsar.client.api.PulsarClient;
+import org.apache.pulsar.client.api.SubscriptionType;
 import smart.pulsar.client.common.PulsarGlobalHelper;
 
 import java.util.List;
@@ -17,18 +18,32 @@ import java.util.stream.Collectors;
 @Slf4j
 public class PulsarConsumer {
 
-    private PulsarClient pulsarClient;
+    private final PulsarClient pulsarClient;
 
-    private String consumerName;
+    private final String consumerName;
 
     private String topicSuffix;
     private String topicPrefix;
+    private String subscriptionTypeStr;
 
-    public PulsarConsumer(String consumerName,String topicPrefix,String topicSuffix,PulsarClient pulsarClient){
+    public PulsarConsumer(String consumerName,PulsarClient pulsarClient){
         this.consumerName = consumerName;
         this.pulsarClient = pulsarClient;
-        this.topicPrefix = topicPrefix;
+    }
+
+    public PulsarConsumer topicSuffix(String topicSuffix){
         this.topicSuffix = topicSuffix;
+        return this;
+    }
+
+    public PulsarConsumer topicPrefix(String topicPrefix){
+        this.topicPrefix = topicPrefix;
+        return this;
+    }
+
+    public PulsarConsumer subscriptionType(String subscriptionTypeStr){
+        this.subscriptionTypeStr = subscriptionTypeStr;
+        return this;
     }
 
     public CompletableFuture<Void> consumer(List<String> topics){
@@ -39,7 +54,7 @@ public class PulsarConsumer {
             if (StringUtils.isNotBlank(topicSuffix)){
                 topics = topics.stream().map(topic->topic + topicSuffix).collect(Collectors.toList());
             }
-             pulsarClient.newConsumer().consumerName(consumerName).topics(topics)
+             pulsarClient.newConsumer().consumerName(consumerName).subscriptionType(getSubscriptionType(subscriptionTypeStr)).topics(topics)
                     .messageListener(((consumer, msg) -> {
                         String topic = msg.getTopicName();
                         if (StringUtils.isNotBlank(topicPrefix)){
@@ -60,5 +75,23 @@ public class PulsarConsumer {
             return null;
         }
         return CompletableFuture.completedFuture(null);
+    }
+
+    public SubscriptionType getSubscriptionType(String subscriptionTypeStr){
+        SubscriptionType subscriptionType =  SubscriptionType.Shared;
+        if(StringUtils.isNotBlank(subscriptionTypeStr)){
+            switch (subscriptionTypeStr) {
+                case "exclusive":
+                    subscriptionType = SubscriptionType.Exclusive;
+                    break;
+                case "keyShared":
+                    subscriptionType = SubscriptionType.Key_Shared;
+                    break;
+                case "failover":
+                    subscriptionType = SubscriptionType.Failover;
+                    break;
+            }
+        }
+        return subscriptionType;
     }
 }

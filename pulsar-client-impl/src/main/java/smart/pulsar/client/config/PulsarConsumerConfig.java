@@ -16,4 +16,5 @@ public class PulsarConsumerConfig {
     private List<String> topics = Collections.emptyList();
     private String topicSuffix;
     private String topicPrefix;
+    private String subscriptionType;
 }

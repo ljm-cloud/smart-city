@@ -31,7 +31,10 @@ public class PulsarConsumerService extends PulsarBaseService {
             pulsarConfig.getConsumers().forEach((name,pulsarConsumerConfig)->{
                 if (pulsarConsumerConfig.isEnable()){
                     pulsarClientManager.build(pulsarConsumerConfig.getServiceUrl())
-                            .thenApply(pulsarClient -> new PulsarConsumer(name,pulsarConsumerConfig.getTopicPrefix(),pulsarConsumerConfig.getTopicSuffix(),pulsarClient))
+                            .thenApply(pulsarClient -> new PulsarConsumer(name,pulsarClient)
+                                    .topicPrefix(pulsarConsumerConfig.getTopicPrefix())
+                                    .topicSuffix(pulsarConsumerConfig.getTopicSuffix())
+                                    .subscriptionType(pulsarConsumerConfig.getSubscriptionType()))
                             .thenAccept(pulsarConsumer -> {
                                 pulsarConsumerMap.put(name,pulsarConsumer);
                                 pulsarConsumer.consumer(pulsarConsumerConfig.getTopics());
