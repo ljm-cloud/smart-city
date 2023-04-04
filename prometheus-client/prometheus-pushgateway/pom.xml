@@ -11,5 +11,17 @@
 
     <artifactId>prometheus-pushgateway</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient</artifactId>
+            <version>${prometheus.simpleclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>simpleclient_pushgateway</artifactId>
+            <version>${prometheus.simpleclient.pushgateway.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
