@@ -17,6 +17,7 @@
         <module>smart-park</module>
         <module>smart-device-parser</module>
         <module>pulsar-client-impl</module>
+        <module>prometheus-client</module>
     </modules>
 
     <properties>
