@@ -22,6 +22,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.java.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid-spring-boot-starter.version}</version>
+        </dependency>
     </dependencies>
 
 
