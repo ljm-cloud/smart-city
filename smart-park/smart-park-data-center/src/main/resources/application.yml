@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    druid:
+      keepAlive: true # TCP keep-alive 是一种在 TCP 连接空闲一段时间后，自动发送心跳包（keep-alive 报文）以维持连接状态的机制 可以帮助检测长时间空闲的连接是否已经断开，从而在应用程序中及时进行连接的重新获取或其他处理
+      initial-size: 5 #初始化连接大小
+      max-active: 30 #最大连接池数量
+      min-idle: 5 #最小连接池数量
+      max-wait: 60000 #获取连接时最大等待时间，单位毫秒
+      pool-prepared-statements: true #是否开启PSCache，PSCache对支持游标的数据库性能提升巨大，oracle建议开启，mysql下建议关闭
+      max-pool-prepared-statement-per-connection-size: 20  #开启poolPreparedStatements后生效 用于设置连接池中每个连接的最大预编译语句数量
+      validation-query: select 'x' #测试连接
+      validation-query-timeout: 5 #执行验证查询语句时的超时时间
+      test-on-borrow: true #获取连接时执行检测，建议关闭，影响性能
+      test-while-idle: true #申请连接的时候检测，建议配置为true，不影响性能，并且保证安全性
+      test-on-return: true #归还连接时执行检测，建议关闭，影响性能
+      time-between-eviction-runs-millis: 60000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000 #配置一个连接在池中最小生存的时间，单位是毫秒
+      connection-properties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000' #通过connectProperties属性来打开mergeSql功能;慢SQL记录
+      filters: stat, wall, slf4j #配置扩展插件，常用的插件有=>stat:监控统计  wall:防御sql注入 slf4j:监控和统计日志,将日志输出到 slf4j 日志系统，例如 Logback、Log4j2 等，从而与应用程序中的其他日志一起进行输出和管理
+      filter:
+        stat: #配置StatFilter (SQL监控配置)
+          enabled: true #开启 SQL 监控
+          log-slow-sql: true #记录慢查询 SQL
+          merge-sql: false #是否合并 SQL 语句，从而减少监控和统计数据中的 SQL 语句数量
+          slow-sql-millis: 3000 #慢查询
+        wall: #配置WallFilter (防火墙配置)
+          enabled: true #开启防火墙
+          config:
+            update-allow: true #允许更新操作
+            drop-table-allow: false #禁止删表操作
+            insert-allow:  true #允许插入操作
+            delete-allow: true #删除数据操作
+            comment-allow: false #通过 SQL 注释来执行的 SQL 语句
+      aop-patterns: smart.park.data.center # Spring监控配置，说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
+      stat-view-servlet: # StatViewServlet配置
+        enabled: true #是否开启内置监控页面，默认值为 false
+        url-pattern: '/druid/*' #StatViewServlet 的映射路径，即内置监控页面的访问地址
+        reset-enable: true #是否启用重置按钮
+        login-username: admin #内置监控页面的登录页用户名
+        login-password: admin #内置监控页面的登录页密码
+      web-stat-filter:
+        enabled: true #是否开启内置监控中的 Web-jdbc 关联监控的数据
+        url-pattern: '/*' #匹配路径
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*' #排除路径
+        session-stat-enable: true #是否监控session

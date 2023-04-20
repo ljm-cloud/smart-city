@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: root #数据库登陆用户名
+    password: root #数据库登陆密码
+    #数据库url zeroDateTimeBehavior=convertToNull:将零值的日期时间字段值(0000-00-00 00:00:00)在 JDBC 连接中转换为 null 值
+    #当设置 useUnicode=true 时，表示使用 Unicode 字符集编码进行数据传输和处理，可以确保数据库中存储的各种字符数据（包括非英语字符、特殊符号等）在传输和处理过程中不丢失或损坏
+    #使用 useUnicode=true 参数时，还需要指定 characterEncoding 参数来指定具体的字符编码方式 characterEncoding=UTF-8:指定使用 UTF-8 编码方式进行字符集转换
+    url: jdbc:mysql://127.0.0.1:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Hongkong
+    driver-class-name: com.mysql.cj.jdbc.Driver #数据库驱动
