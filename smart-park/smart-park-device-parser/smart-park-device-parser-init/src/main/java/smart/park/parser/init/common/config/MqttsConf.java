@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
-@ConfigurationProperties(prefix="smartoilets")
+@ConfigurationProperties(prefix="smartpark")
 @Data
 public class MqttsConf {
 
